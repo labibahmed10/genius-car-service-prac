@@ -22,11 +22,11 @@ const Checkout = () => {
     };
 
     axios.post("http://localhost:5000/orders", orders).then((res) => {
-      console.log(res);
       const { data } = res;
       if (data.insertedId) {
         toast("congraulations Your order has been succesful");
       }
+      event.target.reset();
     });
   };
 

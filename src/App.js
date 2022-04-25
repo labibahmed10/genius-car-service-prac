@@ -9,6 +9,7 @@ import Login from "./Pages/Login/Login/Login";
 import Register from "./Pages/Login/Register/Register";
 import RequireAuth from "./Pages/Login/RequireAuth/RequireAuth";
 import ManageService from "./Pages/ManageService/ManageService";
+import OrderHistory from "./Pages/OrderHistory/OrderHistory";
 import ServiceDetail from "./Pages/ServiceDetail/ServiceDetail";
 import Footer from "./Pages/Shared/Footer/Footer";
 import Header from "./Pages/Shared/Header/Header";
@@ -60,6 +61,7 @@ function App() {
             </RequireAuth>
           }
         ></Route>
+        <Route path="/orderhistory" element={<OrderHistory></OrderHistory>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
