@@ -4,6 +4,7 @@ import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Navigate, useNavigate } from "react-router-dom";
+import axiosPrivate from "../../api/axiosPrivate";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading/Loading";
 
@@ -16,12 +17,9 @@ const OrderHistory = () => {
   useEffect(() => {
     const getOrders = async () => {
       try {
-        await axios
-          .get(`http://localhost:5000/orderhistory?email=${user?.email}`, {
-            headers: {
-              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            },
-          })
+        //ekhane age axios chilo shudhu and headers e auth er bearer soho token pathaicilo but ekhn axiosPrivate e sob kora hcche
+        await axiosPrivate
+          .get(`http://localhost:5000/orderhistory?email=${user?.email}`)
           .then((res) => setOrder(res?.data));
       } catch (error) {
         console.log(error.response.status);
