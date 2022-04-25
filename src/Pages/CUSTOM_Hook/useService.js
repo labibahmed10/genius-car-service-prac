@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const useCustom_Hook = () => {
+const useService = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
@@ -12,4 +12,4 @@ const useCustom_Hook = () => {
   return [services, setServices];
 };
 
-export default useCustom_Hook;
+export default useService;

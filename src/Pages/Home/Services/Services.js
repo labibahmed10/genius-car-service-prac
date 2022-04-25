@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import useCustom_Hook from "../../CUSTOM_Hook/Custom_Hook";
+import useService from "../../CUSTOM_Hook/useService";
 import Service from "../Service/Service";
 import "./Services.css";
 
 const Services = () => {
-  const [services, setServices] = useCustom_Hook();
+  const [services, setServices] = useService();
 
   return (
     <div id="services" className="container">

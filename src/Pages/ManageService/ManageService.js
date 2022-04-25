@@ -1,9 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import useCustom_Hook from "../CUSTOM_Hook/Custom_Hook";
+import useService from "../CUSTOM_Hook/useService";
 
 const ManageService = () => {
-  const [services, setServices] = useCustom_Hook();
+  const [services, setServices] = useService();
 
   const deleteUser = (id) => {
     console.log(id);
