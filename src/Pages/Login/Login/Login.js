@@ -37,7 +37,7 @@ const Login = () => {
 
     await signInWithEmailAndPassword(email, password);
 
-    const { data } = await axios.post("http://localhost:5000/getToken", { email });
+    const { data } = await axios.post("https://shrouded-depths-33292.herokuapp.com/getToken", { email });
 
     localStorage.setItem("accessToken", data.accessToken);
     navigate(from, { replace: true });

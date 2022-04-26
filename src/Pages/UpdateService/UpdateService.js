@@ -1,14 +1,16 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const UpdateService = () => {
   const { uid } = useParams();
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data);
 
-    fetch(`http://localhost:5000/service/${uid}`, {
+    fetch(`https://shrouded-depths-33292.herokuapp.com/service/${uid}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -16,7 +18,12 @@ const UpdateService = () => {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        if (data.acknowledged) {
+          toast("Your Service was Uploaded sir");
+          navigate("/");
+        }
+      });
   };
   return (
     <div>

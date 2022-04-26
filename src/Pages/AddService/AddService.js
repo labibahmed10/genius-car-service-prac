@@ -6,7 +6,7 @@ const AddService = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    fetch("http://localhost:5000/service", {
+    fetch("https://shrouded-depths-33292.herokuapp.com/service", {
       method: "POST",
       headers: {
         "content-type": "application/json",

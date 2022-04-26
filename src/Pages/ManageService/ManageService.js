@@ -10,7 +10,7 @@ const ManageService = () => {
     const confirm = window.confirm("Are you sure want to delete?");
 
     if (confirm) {
-      fetch(`http://localhost:5000/service/${id}`, {
+      fetch(`https://shrouded-depths-33292.herokuapp.com/service/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

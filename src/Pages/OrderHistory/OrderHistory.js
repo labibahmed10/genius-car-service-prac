@@ -14,15 +14,22 @@ const OrderHistory = () => {
   console.log(user);
   const navigate = useNavigate();
 
+  if (loading) {
+    <Loading></Loading>;
+  }
+
   useEffect(() => {
     const getOrders = async () => {
       try {
         //ekhane age axios chilo shudhu and headers e auth er bearer soho token pathaicilo but ekhn axiosPrivate e sob kora hcche
         await axiosPrivate
-          .get(`http://localhost:5000/orderhistory?email=${user?.email}`)
+          .get(`https://shrouded-depths-33292.herokuapp.com/orderhistory?email=${user?.email}`)
           .then((res) => setOrder(res?.data));
       } catch (error) {
         console.log(error.response.status);
+        if (loading) {
+          return <Loading></Loading>;
+        }
         if (error.response.status === 401 || error.response.status === 403) {
           signOut(auth);
           navigate("/login");
@@ -31,10 +38,6 @@ const OrderHistory = () => {
     };
     getOrders();
   }, [user]);
-
-  if (loading) {
-    return <Loading></Loading>;
-  }
 
   return (
     <div>

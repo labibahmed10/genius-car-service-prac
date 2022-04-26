@@ -21,7 +21,7 @@ const Checkout = () => {
       phone: event.target.phone.value,
     };
 
-    axios.post("http://localhost:5000/orders", orders).then((res) => {
+    axios.post("https://shrouded-depths-33292.herokuapp.com/orders", orders).then((res) => {
       const { data } = res;
       if (data.insertedId) {
         toast("congraulations Your order has been succesful");

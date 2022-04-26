@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "genius-car-services-18c77"
-  }
+    "default": "genius-car-service-3f5af",
+    "staging\t\t\t": "genius-car-service-3f5af"
+  },
+  "targets": {}
 }
