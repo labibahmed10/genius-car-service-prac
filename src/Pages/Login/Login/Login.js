@@ -8,7 +8,7 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PageTitle from "../../Shared/PageTitle/PageTitle";
-import axios from "axios";
+import useToken from "../../Shared/UseToken.js/useToken";
 
 const Login = () => {
   const emailRef = useRef("");
@@ -21,6 +21,9 @@ const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
 
   const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+
+  //used for token
+  const [token] = useToken(user);
 
   if (loading || sending) {
     return <Loading></Loading>;
@@ -36,18 +39,16 @@ const Login = () => {
     const password = passwordRef.current.value;
 
     await signInWithEmailAndPassword(email, password);
-
-    const { data } = await axios.post("https://shrouded-depths-33292.herokuapp.com/getToken", { email });
-
-    localStorage.setItem("accessToken", data.accessToken);
-    navigate(from, { replace: true });
-
-    console.log(data);
   };
 
   const navigateRegister = (event) => {
     navigate("/register");
   };
+
+  //jodi token ta create hoy taholei prev page e nibe ekhane age user er jnno chilo
+  if (token) {
+    navigate(from, { replace: true });
+  }
 
   const resetPassword = async () => {
     const email = emailRef.current.value;
